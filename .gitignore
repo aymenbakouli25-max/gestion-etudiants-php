@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+
+uploads/*
+!uploads/.htaccess
+
+*.sql.bak
+*.dump
+*.log
