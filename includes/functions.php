@@ -127,7 +127,7 @@ function validate_student(array $data): array {
     if (!filter_var($student['email'], FILTER_VALIDATE_EMAIL) || strlen($student['email']) > 150) {
         $errors[] = 'Adresse e-mail invalide.';
     }
-    if (!in_array($student['niveau'], ['1ère année', '2ème année', '3ème année'], true)) {
+    if (!in_array($student['niveau'], ['1ère année', '2ème année', '3ème année', 'Bachelor'], true)) {
         $errors[] = 'Choisissez un niveau valide.';
     }
     if ($student['date_naissance'] !== '') {

@@ -12,7 +12,7 @@ if ($q !== '') {
     $where[] = '(code_apogee LIKE :q1 OR nom LIKE :q2 OR prenom LIKE :q3 OR email LIKE :q4 OR filiere LIKE :q5)';
     foreach (['q1', 'q2', 'q3', 'q4', 'q5'] as $key) $params[$key] = '%' . $q . '%';
 }
-if (in_array($filter, ['1ère année', '2ème année', '3ème année'], true)) {
+if (in_array($filter, ['1ère année', '2ème année', '3ème année', 'Bachelor'], true)) {
     $where[] = 'niveau = :niveau';
     $params['niveau'] = $filter;
 }

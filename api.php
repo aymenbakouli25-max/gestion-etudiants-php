@@ -44,7 +44,7 @@ if (in_array($method, ['PUT', 'PATCH'], true)) {
     $allowed = array_intersect_key($payload, array_flip(['nom', 'prenom', 'email', 'filiere', 'niveau', 'date_naissance', 'status']));
     if (!$allowed) json_response(['error' => 'Aucune donnée à modifier.'], 422);
     if (isset($allowed['email']) && !filter_var($allowed['email'], FILTER_VALIDATE_EMAIL)) json_response(['error' => 'Email invalide.'], 422);
-    if (isset($allowed['niveau']) && !in_array($allowed['niveau'], ['1ère année', '2ème année', '3ème année'], true)) json_response(['error' => 'Niveau invalide.'], 422);
+    if (isset($allowed['niveau']) && !in_array($allowed['niveau'], ['1ère année', '2ème année', '3ème année', 'Bachelor'], true)) json_response(['error' => 'Niveau invalide.'], 422);
     if (isset($allowed['status']) && !in_array($allowed['status'], ['active', 'graduated', 'suspended', 'withdrawn'], true)) json_response(['error' => 'Statut invalide.'], 422);
     $sets = [];
     foreach (array_keys($allowed) as $field) $sets[] = "{$field} = :{$field}";

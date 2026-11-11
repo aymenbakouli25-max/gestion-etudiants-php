@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             while (($row = fgetcsv($handle, 0, ';')) !== false) {
                 if (count($row) < 7) continue;
                 [$code, $nom, $prenom, $email, $filiere, $niveau, $birth] = array_map('trim', array_slice($row, 0, 7));
-                if ($code === '' || $nom === '' || $prenom === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || !in_array($niveau, ['1ère année', '2ème année', '3ème année'], true)) continue;
+                if ($code === '' || $nom === '' || $prenom === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || !in_array($niveau, ['1ère année', '2ème année', '3ème année', 'Bachelor'], true)) continue;
                 try {
                     $insert->execute(['code' => $code, 'nom' => $nom, 'prenom' => $prenom, 'email' => $email, 'filiere' => $filiere, 'niveau' => $niveau, 'date_naissance' => $birth ?: null]);
                     $count++;
